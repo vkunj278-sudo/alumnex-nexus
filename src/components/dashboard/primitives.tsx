@@ -16,10 +16,10 @@ export function StatCard({
 }: {
   label: string;
   value: string | number;
-  hint?: string;
+  hint?: string | undefined;
   icon: LucideIcon;
-  progress?: number;
-  tone?: "default" | "ai";
+  progress?: number | undefined;
+  tone?: "default" | "ai" | undefined;
 }) {
   return (
     <Card className={cn("shadow-card", tone === "ai" && "border-ai/25 bg-ai-soft")}>
@@ -52,9 +52,9 @@ export function PanelCard({
   className,
 }: {
   title: string;
-  action?: ReactNode;
+  action?: ReactNode | undefined;
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <Card className={cn("shadow-card", className)}>
@@ -76,7 +76,7 @@ export function EmptyState({
   icon: LucideIcon;
   title: string;
   description: string;
-  action?: ReactNode;
+  action?: ReactNode | undefined;
 }) {
   return (
     <div className="flex flex-col items-center rounded-xl border border-dashed border-border px-6 py-10 text-center">

@@ -9,13 +9,13 @@ import type { MatchResult } from "@/services/matching";
 
 export type AlumniMatchCardProps = {
   name: string;
-  avatarUrl?: string | null;
-  designation?: string | null;
-  companyName?: string | null;
-  location?: string | null;
-  verified?: boolean;
+  avatarUrl?: string | null | undefined;
+  designation?: string | null | undefined;
+  companyName?: string | null | undefined;
+  location?: string | null | undefined;
+  verified?: boolean | undefined;
   skills: string[];
-  match?: MatchResult;
+  match?: MatchResult | undefined;
 };
 
 export function AlumniMatchCard({
