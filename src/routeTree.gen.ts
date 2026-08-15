@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AlumniDashboardRouteImport } from './routes/alumni.dashboard'
+import { Route as StudentDashboardRouteImport } from './routes/student.dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlumniDashboardRoute = AlumniDashboardRouteImport.update({
+  id: '/alumni/dashboard',
+  path: '/alumni/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentDashboardRoute = StudentDashboardRouteImport.update({
+  id: '/student/dashboard',
+  path: '/student/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/settings': typeof SettingsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/alumni/dashboard': typeof AlumniDashboardRoute
+  '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/settings': typeof SettingsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/alumni/dashboard': typeof AlumniDashboardRoute
+  '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/settings': typeof SettingsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/alumni/dashboard': typeof AlumniDashboardRoute
+  '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/settings'
+    | '/admin/dashboard'
+    | '/alumni/dashboard'
+    | '/student/dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/settings'
+    | '/admin/dashboard'
+    | '/alumni/dashboard'
+    | '/student/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/settings'
+    | '/admin/dashboard'
+    | '/alumni/dashboard'
+    | '/student/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
+  SettingsRoute: typeof SettingsRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AlumniDashboardRoute: typeof AlumniDashboardRoute
+  StudentDashboardRoute: typeof StudentDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alumni/dashboard': {
+      id: '/alumni/dashboard'
+      path: '/alumni/dashboard'
+      fullPath: '/alumni/dashboard'
+      preLoaderRoute: typeof AlumniDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/student/dashboard': {
+      id: '/student/dashboard'
+      path: '/student/dashboard'
+      fullPath: '/student/dashboard'
+      preLoaderRoute: typeof StudentDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  SettingsRoute: SettingsRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AlumniDashboardRoute: AlumniDashboardRoute,
+  StudentDashboardRoute: StudentDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
