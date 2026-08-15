@@ -14,6 +14,8 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AlumniDashboardRouteImport } from './routes/alumni.dashboard'
 import { Route as StudentDashboardRouteImport } from './routes/student.dashboard'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +43,16 @@ const SettingsRoute = SettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlumniDashboardRoute = AlumniDashboardRouteImport.update({
+  id: '/alumni/dashboard',
+  path: '/alumni/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudentDashboardRoute = StudentDashboardRouteImport.update({
   id: '/student/dashboard',
   path: '/student/dashboard',
@@ -53,6 +65,8 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/settings': typeof SettingsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/alumni/dashboard': typeof AlumniDashboardRoute
   '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +75,8 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/settings': typeof SettingsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/alumni/dashboard': typeof AlumniDashboardRoute
   '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesById {
@@ -70,6 +86,8 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/settings': typeof SettingsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/alumni/dashboard': typeof AlumniDashboardRoute
   '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +98,8 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/settings'
+    | '/admin/dashboard'
+    | '/alumni/dashboard'
     | '/student/dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +108,8 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/settings'
+    | '/admin/dashboard'
+    | '/alumni/dashboard'
     | '/student/dashboard'
   id:
     | '__root__'
@@ -96,6 +118,8 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/settings'
+    | '/admin/dashboard'
+    | '/alumni/dashboard'
     | '/student/dashboard'
   fileRoutesById: FileRoutesById
 }
@@ -105,6 +129,8 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   SettingsRoute: typeof SettingsRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AlumniDashboardRoute: typeof AlumniDashboardRoute
   StudentDashboardRoute: typeof StudentDashboardRoute
 }
 
@@ -145,6 +171,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alumni/dashboard': {
+      id: '/alumni/dashboard'
+      path: '/alumni/dashboard'
+      fullPath: '/alumni/dashboard'
+      preLoaderRoute: typeof AlumniDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/student/dashboard': {
       id: '/student/dashboard'
       path: '/student/dashboard'
@@ -161,6 +201,8 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   SettingsRoute: SettingsRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AlumniDashboardRoute: AlumniDashboardRoute,
   StudentDashboardRoute: StudentDashboardRoute,
 }
 export const routeTree = rootRouteImport
