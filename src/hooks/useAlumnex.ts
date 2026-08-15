@@ -157,3 +157,28 @@ export function useAlumniDirectory() {
     },
   });
 }
+
+export function useAdminStats() {
+  return useQuery({
+    queryKey: ["admin-stats"],
+    queryFn: async () => {
+      const [alumni, students, companies, verified] = await Promise.all([
+        supabase.from("profiles").select("id", { count: "exact", head: true }).eq("role", "alumni"),
+        supabase.from("profiles").select("id", { count: "exact", head: true }).eq("role", "student"),
+        supabase.from("companies").select("id", { count: "exact", head: true }),
+        supabase
+          .from("profiles")
+          .select("id", { count: "exact", head: true })
+          .eq("role", "alumni")
+          .eq("is_verified", true),
+      ]);
+      const alumniCount = alumni.count ?? 0;
+      return {
+        alumni: alumniCount,
+        students: students.count ?? 0,
+        companies: companies.count ?? 0,
+        verifiedPct: alumniCount ? Math.round(((verified.count ?? 0) / alumniCount) * 100) : 0,
+      };
+    },
+  });
+}
